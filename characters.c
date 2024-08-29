@@ -52,6 +52,13 @@ unsigned int utf8_strlen(char* unicode) {
  *   bytes_for("成龙", 3) -> -1
  */
 unsigned int bytes_for(char* unicode, unsigned int n) {
+  unsigned int nbytes = 0;
+  if (n > utf8_strlen(unicode)) {
+    return -1;
+  }
+  for (int i = 0; i < utf8_strlen(unicode); i++) {
+    nbytes += num_bytes(unicode[i]);
+  }
   return 0;
 }
 
